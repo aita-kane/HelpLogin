@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Global Entreprise | STORE</title>
+		<base href="<?= CLIENT_ROOT ?>">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+	
+        <link rel="stylesheet" href="<?= CLIENT_ROOT.'public\assets\css\mycss.css' ?>">
+        <link rel="stylesheet" href="<?= CLIENT_ROOT.'public\assets\css\landing.css' ?>">
+		<link rel="shortcut icon" type="image/x-icon" href="<?= CLIENT_ROOT?>public\resources\images\leaves.png" />
+	</head>
+	<body>
+
+      
+                    <!-- Alert messages -->
+                            <?php if(isset($alertMessages)): ?>
+                                <?php foreach($alertMessages as $messagesType => $alertMessagesType): ?>
+                                    <?php foreach($alertMessagesType as $alertMessage): ?>
+                                        <p class="alert-message <?= htmlspecialchars($messagesType) ?>"><?= $alertMessage ?></p>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+        
+                    <!-- CONTENT -->	
+        
+                        
+            <?php if(empty($user)) : ?>
+           
+        
+            <?php (new TemplateController()) -> showLoginStatus(); ?>
+            
+            <?php else : ?>
+            <?= $user['email'] ?>
+	<a href="user/logout"><button>Me déconnecter</button></a>
+	<?php endif; ?>
+<!-- 
+		<header>
+			<a href="<?= CLIENT_ROOT ?>"><h1>Global STORE</h1></a>
+			
+			<nav id="menu">
+				<a href="<?= CLIENT_ROOT ?>">Accueil</a>
+				<div id="categories-panel">
+					<a href="categories/showAll">Catégories</a>
+					<nav>
+						<?php (new TemplateController()) -> showCategories(); ?>
+					</nav>
+				</div>
+				<form action="<?= CLIENT_ROOT ?>products/showSearchResult" method="get">
+					<label for="search">Rechercher :</label>
+					<input type="text" name="search" id="search">
+					<button type ="submit">Go !</button>
+				</form>
+				<div id="customer">
+					<a href="customers/account">Espace&nbsp;client</a>
+					<?php (new TemplateController()) -> showLoginStatus(); ?>
+				</div>
+				<div id="cart-panel">
+					<a href="shoppingCart/show">Mon&nbsp;panier</a>
+					<?php (new TemplateController()) -> showMiniShoppingCart(); ?>
+				</div>
+			</nav>
+		</header>
+
+		-->
+		<main>
+			<!-- Alert messages -->
+					<?php if(isset($alertMessages)): ?>
+						<?php foreach($alertMessages as $messagesType => $alertMessagesType): ?>
+							<?php foreach($alertMessagesType as $alertMessage): ?>
+								<p class="alert-message <?= htmlspecialchars($messagesType) ?>"><?= $alertMessage ?></p>
+							<?php endforeach; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
+
+			<!-- CONTENT -->	
+
+				<?=$viewContent?></main>
+
+			<!-- END CONTENT -->
+
+		<footer>Création : Aïta KANE et Mariéme WADE- <small> site codé en Juin 2018</small></footer>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<!-- <script src="jquery-3.1.1.min.js"></script> -->
+		<script src="<?= CLIENT_ROOT ?>public/resources/javascript/script.js"></script>
+	</body>
+</html>
